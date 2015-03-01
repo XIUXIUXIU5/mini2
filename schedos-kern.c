@@ -47,7 +47,7 @@ static process_t proc_array[NPROCS];
 process_t *current;
 
 // The preferred scheduling algorithm.
-int scheduling_algorithm 1;
+int scheduling_algorithm ;
 
 
 /*****************************************************************************
@@ -98,7 +98,7 @@ start(void)
 	cursorpos = (uint16_t *) 0xB8000;
 
 	// Initialize the scheduling algorithm.
-	scheduling_algorithm = 0;
+	scheduling_algorithm = 1;
 
 	// Switch to the first process.
 	run(&proc_array[1]);
@@ -190,7 +190,7 @@ void
 schedule(void)
 {
 	pid_t pid = current->p_pid;
-	
+
 	if (scheduling_algorithm == 0)
 		while (1) {
 			pid = (pid + 1) % NPROCS;
