@@ -17,6 +17,8 @@
 #ifndef PRINTCHAR
 #define PRINTCHAR	('1' | 0x0C00)
 #define MYPRIORITY	1
+#define EX6 1
+
 #endif
 
 void
@@ -27,7 +29,7 @@ start(void)
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
 		
-	if( defined(EX6) )
+	if( EX6 )
 		sys_printc(PRINTCHAR);
 
 	else
