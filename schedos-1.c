@@ -27,10 +27,10 @@ start(void)
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
 		while(atomic_swap(&lock,1)!=0) { 
-				continue;
-			}
-			*cursorpos++ = PRINTCHAR;
-			atomic_swap(&lock,0); 		
+			continue;
+		}
+		*cursorpos++ = PRINTCHAR;
+		atomic_swap(&lock,0);		
 			sys_yield();
 	}
 
