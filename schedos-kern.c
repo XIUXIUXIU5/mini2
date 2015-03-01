@@ -167,9 +167,10 @@ interrupt(registers_t *reg)
 		// time quantum).
 		// Switch to the next runnable process.
 		schedule();
+	
 	case INT_CHAR_PRINT:
-		*cursorpos++ = reg->reg_eax;
-		schedule();
+		*cursorpos++ = (uint16_t) current->p_registers.reg_eax;
+		run(current);
 
 	default:
 		while (1)

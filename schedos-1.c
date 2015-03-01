@@ -26,12 +26,14 @@ start(void)
 
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
-		while(atomic_swap(&lock,1)!=0) { 
-			continue;
-		}
+		
+	#define EX6
+
+	#if defined(EX6)
+		sys_printc(PRINTCHAR);
+	#elif
 		*cursorpos++ = PRINTCHAR;
-		atomic_swap(&lock,0);		
-			sys_yield();
+	#endif
 	}
 
 	// Yield forever.
