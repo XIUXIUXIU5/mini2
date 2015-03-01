@@ -100,6 +100,9 @@ start(void)
 	// Initialize the scheduling algorithm.
 	scheduling_algorithm = 0;
 
+	//initialize the lock
+	lock = 0;
+
 	// Switch to the first process.
 	run(&proc_array[1]);
 
