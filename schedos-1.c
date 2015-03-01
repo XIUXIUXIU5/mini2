@@ -27,13 +27,14 @@ start(void)
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
 		
-	#if defined(EX6) && !defined(EX8)
+	if( defined(EX6) )
 		sys_printc(PRINTCHAR);
 
-	#else
+	else
 		*cursorpos++ = PRINTCHAR;
-	#endif
+	
 		sys_yield();
+	}
 
 	// Yield forever.
 	sys_exit(0);
