@@ -1,5 +1,5 @@
-Name:
-UCLA ID:
+Name: Lei Shao
+UCLA ID: 204304394
 
 Collaborators:
 
@@ -8,7 +8,7 @@ Collaborators:
 Response to Exercise 1:
 
 The name of the scheduling algorithm is:
-
+Round Robin
 
 (Exercise 2 is a coding exercise)
 
@@ -16,10 +16,33 @@ The name of the scheduling algorithm is:
 Response to Exercise 3:
 
 Average turnaround time for scheduling_algorithm 0:
+1: 1280 - 3  = 1277ms
+2: 1280 - 2 = 1278ms
+3: 1280 - 1 = 1279ms
+4: 1280ms
+	average: (1277+1278+1279+1280)/4 = 1278.5ms
+
 Average turnaround time for scheduling_algorithm 1:
+1: 320ms
+2: 640ms
+3: 960ms
+4 1280ms
+	(320+640+960+1280)/4 = 800ms
 
 Average wait time for scheduling_algorithm 0:
+1: 0ms
+2: 1ms
+3: 2ms
+4: 3ms
+	(0+1+2+3)/4 = 1.5ms
+
 Average wait time for scheduling_algorithm 1:
+1: 0ms
+2: 320ms
+3: 640ms
+4: 960ms
+	(0+320+640+960)/4 = 480ms
+
 
 
 Exercise 4:

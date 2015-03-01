@@ -151,7 +151,8 @@ interrupt(registers_t *reg)
 		// 'sys_user*' are provided for your convenience, in case you
 		// want to add a system call.
 		/* Your code here (if you want). */
-		run(current);
+		current->p_priority = reg->reg_eax;
+		schedule();
 
 	case INT_SYS_USER2:
 		/* Your code here (if you want). */
@@ -190,16 +191,30 @@ schedule(void)
 {
 	pid_t pid = current->p_pid;
 
-	if (scheduling_algorithm == 0)
+	if (scheduling_algorithm == 1)
 		while (1) {
-			pid = (pid + 1) % NPROCS;
-
-			// Run the selected process, but skip
-			// non-runnable processes.
-			// Note that the 'run' function does not return.
+			for (pid = 0; pid < NPROCS; pid++)
 			if (proc_array[pid].p_state == P_RUNNABLE)
 				run(&proc_array[pid]);
+	}
+	
+	else if (scheduling_algorithm == 2) {
+		int i;
+		while(1) {
+			pid_t highestPriority = 0;
+			pid = (pid + 1) % NPROCS;
+			for(i = 1; i < NPROCS; i++) {
+				if(proc_array[i].p_state == P_RUNNABLE) {
+					if(proc_array[i].p_priority <= proc_array[highestPriority].p_priority
+						 || highestPriority == 0) {
+					}
+				}
+			}
+		if(proc_array[pid].p_priority == proc_array[highestPriority].p_priority 
+			&& proc_array[pid].p_state == P_RUNNABLE)
+				run(&proc_array[pid]);
 		}
+	}
 
 	// If we get here, we are running an unknown scheduling algorithm.
 	cursorpos = console_printf(cursorpos, 0x100, "\nUnknown scheduling algorithm %d\n", scheduling_algorithm);

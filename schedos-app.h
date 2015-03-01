@@ -34,6 +34,14 @@ sys_yield(void)
 		     : "cc", "memory");
 }
 
+static inline void
+sys_set_priority(int level) {
+		//Sets the priority level for the current process
+		asm volatile("int %0\n"
+				: : "i" (INT_SYS_USER1),
+				    "a" (level)
+				: "cc", "memory");
+	}
 
 /*****************************************************************************
  * sys_exit(status)
