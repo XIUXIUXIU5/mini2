@@ -47,7 +47,7 @@ static process_t proc_array[NPROCS];
 process_t *current;
 
 // The preferred scheduling algorithm.
-int scheduling_algorithm;
+int scheduling_algorithm 1;
 
 
 /*****************************************************************************
@@ -190,6 +190,17 @@ void
 schedule(void)
 {
 	pid_t pid = current->p_pid;
+	
+	if (scheduling_algorithm == 0)
+		while (1) {
+			pid = (pid + 1) % NPROCS;
+
+			// Run the selected process, but skip
+			// non-runnable processes.
+			// Note that the 'run' function does not return.
+			if (proc_array[pid].p_state == P_RUNNABLE)
+				run(&proc_array[pid]);
+		}
 
 	if (scheduling_algorithm == 1)
 		while (1) {
@@ -197,7 +208,7 @@ schedule(void)
 			if (proc_array[pid].p_state == P_RUNNABLE)
 				run(&proc_array[pid]);
 	}
-	
+
 	else if (scheduling_algorithm == 2) {
 		int i;
 		while(1) {
