@@ -6,6 +6,6 @@
  *****************************************************************************/
 
 #define PRINTCHAR	('2' | 0x0A00)
-//#define MYPRIORITY	2 /*for test Q4a*/
+#define MYPRIORITY	4 /*for test Q4a*/
 
 #include "schedos-1.c"

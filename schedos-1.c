@@ -16,7 +16,7 @@
 
 #ifndef PRINTCHAR
 #define PRINTCHAR	('1' | 0x0C00)
-//#define MYPRIORITY	1 /*for test Q4a*/
+#define MYPRIORITY	5 /*for test Q4a*/
 
 #endif
 #define Q6 1 /* this is for Q6*/
