@@ -72,9 +72,9 @@ sys_exit(int status)
 
 static inline void
 sys_printc(uint16_t c)
-	{
+{
 		asm volatile("int %0\n" 
-				: : "i" (INT_CHAR_PRINT), "a" (c) 
+				: : "i" (INT_SYS_PRINTC), "a" (c) 
 				: "cc", "memory");
-	}
+}
 #endif

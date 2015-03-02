@@ -168,7 +168,7 @@ interrupt(registers_t *reg)
 		// Switch to the next runnable process.
 		schedule();
 	
-	case INT_CHAR_PRINT:
+	case INT_SYS_PRINTC:
 		*cursorpos++ = (uint16_t) current->p_registers.reg_eax;
 		run(current);
 

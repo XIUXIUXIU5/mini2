@@ -29,9 +29,13 @@ start(void)
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
 		
-	if( EX6 )
-		sys_printc(PRINTCHAR);
-
+	if( EX6 ){
+		while(atomic_swap(&lock,1)!=0) { //Polling for the global lock. Exercise 6
+			continue;
+		}
+		*cursorpos++ = PRINTCHAR;
+		atomic_swap(&lock,0); 
+	}
 	else
 		*cursorpos++ = PRINTCHAR;
 	
