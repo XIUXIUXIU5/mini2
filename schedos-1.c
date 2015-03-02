@@ -16,10 +16,10 @@
 
 #ifndef PRINTCHAR
 #define PRINTCHAR	('1' | 0x0C00)
-//#define MYPRIORITY	1
+//#define MYPRIORITY	1 /*for test Q4a*/
 
 #endif
-#define EX6 1
+#define Q6 1 /* this is for Q6*/
 
 void
 start(void)
@@ -29,7 +29,7 @@ start(void)
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
 		
-	if( EX6 ){
+	if( Q6 ){
 		while(atomic_swap(&lock,1)!=0) { //Polling for the global lock. Exercise 6
 			continue;
 		}

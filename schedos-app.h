@@ -70,6 +70,8 @@ sys_exit(int status)
 }
 
 
+/*this is for Q6*/
+
 static inline void
 sys_printc(uint16_t c)
 {

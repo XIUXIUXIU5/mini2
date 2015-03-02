@@ -91,7 +91,7 @@ start(void)
 
 		// Mark the process as runnable!
 		proc->p_state = P_RUNNABLE;
-		proc->p_priority = 0;
+		proc->p_priority = 0; /*for 4a*/
 	}
 
 	// Initialize the cursor-position shared variable to point to the
@@ -155,7 +155,7 @@ interrupt(registers_t *reg)
 		// 'sys_user*' are provided for your convenience, in case you
 		// want to add a system call.
 		/* Your code here (if you want). */
-		current->p_priority = reg->reg_eax;
+		current->p_priority = current->reg->reg_eax;
 		schedule();
 
 	case INT_SYS_USER2:
@@ -226,6 +226,8 @@ schedule(void)
 				if(proc_array[i].p_state == P_RUNNABLE) {
 					if(proc_array[i].p_priority <= proc_array[highestPriority].p_priority
 						 || highestPriority == 0) {
+							highestPriority = i;
+
 					}
 				}
 			}
