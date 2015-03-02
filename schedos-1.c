@@ -16,7 +16,7 @@
 
 #ifndef PRINTCHAR
 #define PRINTCHAR	('1' | 0x0C00)
-#define MYPRIORITY	1
+//#define MYPRIORITY	1
 
 #endif
 #define EX6 1
