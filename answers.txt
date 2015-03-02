@@ -51,7 +51,7 @@ Did you complete Exercise 4A, Exercise 4B, or both for extra credit?
 I only did the 4A
 
 Exercise 5:
-errors occurs after 1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3 is printed out, before it prints 4.
+First occurs after 1,2,3,4,1,2,3,4,1,2,3,4,1,2,3,4,1,2,3 is printed out, before it prints 4.
 Because it didn't follow the round-robin order of 1,2,3,4 here.
 
 (Exercise 6 is a coding exercise)
