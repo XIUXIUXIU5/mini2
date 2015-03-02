@@ -155,7 +155,7 @@ interrupt(registers_t *reg)
 		// 'sys_user*' are provided for your convenience, in case you
 		// want to add a system call.
 		/* Your code here (if you want). */
-		current->p_priority = current->reg->reg_eax;
+		current->p_priority = reg->reg_eax;
 		schedule();
 
 	case INT_SYS_USER2:
