@@ -100,7 +100,7 @@ start(void)
 	lock = 0;
 
 	// Initialize the scheduling algorithm.
-	scheduling_algorithm = 2;
+	scheduling_algorithm = 1;
 
 	//initialize the lock
 
@@ -213,8 +213,8 @@ schedule(void)
 	if (scheduling_algorithm == 1)
 		while (1) {
 			for (pid = 0; pid < NPROCS; pid++)
-			if (proc_array[pid].p_state == P_RUNNABLE)
-				run(&proc_array[pid]);
+				if (proc_array[pid].p_state == P_RUNNABLE)
+					run(&proc_array[pid]);
 	}
 
 	else if (scheduling_algorithm == 2) {
