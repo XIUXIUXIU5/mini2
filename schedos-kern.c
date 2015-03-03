@@ -91,7 +91,7 @@ start(void)
 
 		// Mark the process as runnable!
 		proc->p_state = P_RUNNABLE;
-		proc->p_priority = 0; /*for 4a*/
+		proc->p_priority = i; /*for 4a*/
 	}
 
 	// Initialize the cursor-position shared variable to point to the
@@ -218,23 +218,20 @@ schedule(void)
 	}
 
 	else if (scheduling_algorithm == 2) {
-		int i;
-		while(1) {
-			pid_t highestPriority = 0;
-			pid = (pid + 1) % NPROCS;
-			for(i = 1; i < NPROCS; i++) {
-				if(proc_array[i].p_state == P_RUNNABLE) {
-					if(proc_array[i].p_priority <= proc_array[highestPriority].p_priority
-						 || highestPriority == 0) {
-							highestPriority = i;
+		int highest = ~(1 << 31);
 
-					}
-				}
-			}
-		if(proc_array[pid].p_priority == proc_array[highestPriority].p_priority 
-			&& proc_array[pid].p_state == P_RUNNABLE)
+		int i;
+		for (i = 1; i < NPROCS; i++)
+			if (proc_array[i].p_state == P_RUNNABLE && proc_array[i].p_priority < highest) 
+				highest = proc_array[i].p_priority;
+
+		while (1) {
+			// start at next pid to alternate b/w highest priority processes
+			pid = (pid + 1) % NPROCS;
+			if (proc_array[pid].p_state == P_RUNNABLE && proc_array[pid].p_priority == highest)
 				run(&proc_array[pid]);
 		}
+	
 	}
 
 	// If we get here, we are running an unknown scheduling algorithm.
