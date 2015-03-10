@@ -221,15 +221,15 @@ schedule(void)
 		int highest = ~(1 << 31);
 
 		int i;
-		for (i = 1; i < NPROCS; i++)
-			if (proc_array[i].p_state == P_RUNNABLE && proc_array[i].p_priority < highest) 
-				highest = proc_array[i].p_priority;
+		
 
 		while (1) {
-			
+			for (i = 1; i < NPROCS; i++)
+			if (proc_array[i].p_state == P_RUNNABLE && proc_array[i].p_priority < highest) 
+				highest = proc_array[i].p_priority;
 			// start at next pid to alternate b/w highest priority processes
 			pid = (pid + 1) % NPROCS;
-			if (proc_array[pid].p_state == P_RUNNABLE && proc_array[pid].p_priority == highest)
+			if (proc_array[pid].p_state == P_RUNNABLE && proc_array[pid].p_priority <= highest)
 				run(&proc_array[pid]);
 		}
 	
