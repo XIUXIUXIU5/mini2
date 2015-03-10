@@ -59,6 +59,9 @@ Because it didn't follow the round-robin order of 1,2,3,4 here.
 
 Anything else you'd like us to know:
 
+for exercise 6, 
+change #define Q6 1 /* this is for Q6*/ then question 6 mode is on
+#define Q6 0 /* this is for Q6*/ then it is off.
 
 
 Extra credit exercises:
