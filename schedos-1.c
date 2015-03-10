@@ -25,6 +25,8 @@ void
 start(void)
 {
 	int i;
+	sys_set_priority(MYPRIORITY);
+	sys_yield();
 
 	for (i = 0; i < RUNCOUNT; i++) {
 		// Write characters to the console, yielding after each one.
