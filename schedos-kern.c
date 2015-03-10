@@ -100,7 +100,7 @@ start(void)
 	lock = 0;
 
 	// Initialize the scheduling algorithm.
-	scheduling_algorithm = 1;
+	scheduling_algorithm = 2;
 
 	//initialize the lock
 
